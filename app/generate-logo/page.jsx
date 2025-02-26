@@ -12,17 +12,23 @@ import axios from "axios";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
-import LottieAnimation from "@/components/ui/lottie-animation";
 import { Button } from "@/components/ui/button";
 import { Download, RotateCcw } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const LottieAnimation = dynamic(
+  () => import("@/components/ui/lottie-animation"),
+  { ssr: false }
+);
 
 function GenerateLogo() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const [formData, setFormData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [logoImage, setLogoImage] = useState(null);
-  const searchParams = useSearchParams();
-  const modelType = searchParams.get("type");
+  const searchParams = typeof window !== "undefined" ? useSearchParams() : null;
+  const modelType = searchParams?.get("type") ?? "Default";
+
   const [displayCredits, setDisplayCredits] = useState(null);
 
   // Prevent multiple executions
@@ -36,7 +42,8 @@ function GenerateLogo() {
 
   // Load stored formData from localStorage
   useEffect(() => {
-    if (typeof window !== "undefined" && userDetail?.email && !formData) {
+    if (typeof window === "undefined") return;
+    if (userDetail?.email && !formData) {
       const storage = localStorage.getItem("formData");
       if (storage) {
         setFormData(JSON.parse(storage));
@@ -273,5 +280,5 @@ function GenerateLogo() {
     </div>
   );
 }
-export const dynamic = "force-dynamic";
+
 export default GenerateLogo;
