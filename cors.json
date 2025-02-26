@@ -1,6 +1,9 @@
 [
   {
-    "origin": ["https://yourdomain.com", "http://localhost:3000"],
+    "origin": [
+      "https://deeplogo-ai.jeremiahdelacruz.uno",
+      "http://localhost:3000"
+    ],
     "method": ["GET", "HEAD", "PUT", "POST", "DELETE"],
     "responseHeader": ["Content-Type"],
     "maxAgeSeconds": 3600
