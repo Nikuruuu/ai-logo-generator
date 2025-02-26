@@ -15,7 +15,6 @@ import { toast } from "sonner";
 import LottieAnimation from "@/components/ui/lottie-animation";
 import { Button } from "@/components/ui/button";
 import { Download, RotateCcw } from "lucide-react";
-import { saveAs } from "file-saver";
 
 function GenerateLogo() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
@@ -154,6 +153,8 @@ function GenerateLogo() {
       }
 
       const loadingToastId = toast.loading("Preparing your download...");
+      // Dynamically import saveAs only on the client
+      const { saveAs } = await import("file-saver");
 
       console.log("Attempting to download logo from URL:", logoImage);
 

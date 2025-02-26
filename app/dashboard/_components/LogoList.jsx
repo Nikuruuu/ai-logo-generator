@@ -7,7 +7,6 @@ import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import { Download, Trash2, Info } from "lucide-react";
-import { saveAs } from "file-saver";
 import {
   Pagination,
   PaginationContent,
@@ -164,6 +163,8 @@ function LogoList() {
     try {
       console.log("Attempting to download logo from URL:", logo.imageUrl);
 
+      // Dynamically import saveAs only on the client
+      const { saveAs } = await import("file-saver");
       const response = await fetch(logo.imageUrl, {
         mode: "cors", // Ensure CORS is enabled
       });
