@@ -177,21 +177,8 @@ function LogoList() {
         ? `${logo.title.replace(/\s+/g, "-")}.png`
         : `logo-${logo.id}.png`;
 
-      // Create a URL for the blob
-      const url = window.URL.createObjectURL(blob);
-
-      // Create a temporary link element
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = filename;
-
-      // Append to document, click and remove
-      document.body.appendChild(link);
-      link.click();
-
-      // Clean up
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      const FileSaver = await import("file-saver");
+      FileSaver.default(blob, filename);
       toast.dismiss(loadingToastId);
       setTimeout(() => {
         toast.success("Logo downloaded successfully!");
