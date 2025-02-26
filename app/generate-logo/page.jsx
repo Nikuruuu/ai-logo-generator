@@ -153,8 +153,6 @@ function GenerateLogo() {
       }
 
       const loadingToastId = toast.loading("Preparing your download...");
-      // Dynamically import saveAs only on the client
-      const { saveAs } = await import("file-saver");
 
       console.log("Attempting to download logo from URL:", logoImage);
 
@@ -171,7 +169,8 @@ function GenerateLogo() {
         ? `${formData.title.replace(/\s+/g, "-")}.png`
         : `logo-${Date.now()}.png`;
 
-      saveAs(blob, filename);
+      const fileDownloader = await import("file-saver");
+      fileDownloader.default(blob, filename);
 
       toast.dismiss(loadingToastId);
 

@@ -164,7 +164,7 @@ function LogoList() {
       console.log("Attempting to download logo from URL:", logo.imageUrl);
 
       // Dynamically import saveAs only on the client
-      const { saveAs } = await import("file-saver");
+
       const response = await fetch(logo.imageUrl, {
         mode: "cors", // Ensure CORS is enabled
       });
@@ -177,8 +177,8 @@ function LogoList() {
       const filename = logo.title
         ? `${logo.title.replace(/\s+/g, "-")}.png`
         : `logo-${logo.id}.png`;
-
-      saveAs(blob, filename);
+      const fileDownloader = await import("file-saver");
+      fileDownloader.default(blob, filename);
     } catch (error) {
       console.error("Error downloading logo:", error);
       alert("Failed to download the logo. Please try again later.");
