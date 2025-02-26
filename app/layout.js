@@ -5,8 +5,10 @@ import { ClerkProvider } from "@clerk/nextjs";
 import AuthRedirectHandler from "./auth-redirect";
 import { Toaster } from "@/components/ui/sonner";
 
-const host_Grotesk = Host_Grotesk({
+const hostGrotesk = Host_Grotesk({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-host-grotesk",
 });
 
 export const metadata = {
@@ -18,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={host_Grotesk.className}>
+        <body className={hostGrotesk.variable}>
           <Provider>
             <AuthRedirectHandler>{children}</AuthRedirectHandler>
           </Provider>

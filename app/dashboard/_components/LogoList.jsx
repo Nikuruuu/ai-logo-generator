@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { toast } from "sonner";
 
 function LogoList() {
   const { userDetail } = useContext(UserDetailContext);
@@ -161,9 +162,7 @@ function LogoList() {
 
   const handleDownload = async (logo) => {
     try {
-      console.log("Attempting to download logo from URL:", logo.imageUrl);
-
-      // Dynamically import saveAs only on the client
+      const loadingToastId = toast.loading("Preparing your download...");
 
       const response = await fetch(logo.imageUrl, {
         mode: "cors", // Ensure CORS is enabled
@@ -177,11 +176,32 @@ function LogoList() {
       const filename = logo.title
         ? `${logo.title.replace(/\s+/g, "-")}.png`
         : `logo-${logo.id}.png`;
-      const fileDownloader = await import("file-saver");
-      fileDownloader.default(blob, filename);
+
+      // Create a URL for the blob
+      const url = window.URL.createObjectURL(blob);
+
+      // Create a temporary link element
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+
+      // Append to document, click and remove
+      document.body.appendChild(link);
+      link.click();
+
+      // Clean up
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      toast.dismiss(loadingToastId);
+      setTimeout(() => {
+        toast.success("Logo downloaded successfully!");
+      }, 300);
     } catch (error) {
       console.error("Error downloading logo:", error);
-      alert("Failed to download the logo. Please try again later.");
+      toast.dismiss();
+      toast.error("Download failed", {
+        description: "Failed to download the logo. Please try again later.",
+      });
     }
   };
 
@@ -685,5 +705,5 @@ function LogoList() {
     </div>
   );
 }
-
+export const dynamic = "force-dynamic";
 export default LogoList;

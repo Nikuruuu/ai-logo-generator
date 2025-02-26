@@ -169,8 +169,21 @@ function GenerateLogo() {
         ? `${formData.title.replace(/\s+/g, "-")}.png`
         : `logo-${Date.now()}.png`;
 
-      const fileDownloader = await import("file-saver");
-      fileDownloader.default(blob, filename);
+      // Create a URL for the blob
+      const url = window.URL.createObjectURL(blob);
+
+      // Create a temporary link element
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+
+      // Append to document, click and remove
+      document.body.appendChild(link);
+      link.click();
+
+      // Clean up
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
 
       toast.dismiss(loadingToastId);
 
@@ -281,5 +294,5 @@ function GenerateLogo() {
     </div>
   );
 }
-
+export const dynamic = "force-dynamic";
 export default GenerateLogo;
