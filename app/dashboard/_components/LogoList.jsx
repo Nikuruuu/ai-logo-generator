@@ -161,31 +161,31 @@ function LogoList() {
   };
 
   const handleDownload = async (logo) => {
-    // try {
-    //   const loadingToastId = toast.loading("Preparing your download...");
-    //   const response = await fetch(logo.imageUrl, {
-    //     mode: "cors", // Ensure CORS is enabled
-    //   });
-    //   if (!response.ok) {
-    //     throw new Error(`Network response was not ok: ${response.statusText}`);
-    //   }
-    //   const blob = await response.blob();
-    //   const filename = logo.title
-    //     ? `${logo.title.replace(/\s+/g, "-")}.png`
-    //     : `logo-${logo.id}.png`;
-    //   const FileSaver = await import("file-saver");
-    //   FileSaver.default(blob, filename);
-    //   toast.dismiss(loadingToastId);
-    //   setTimeout(() => {
-    //     toast.success("Logo downloaded successfully!");
-    //   }, 300);
-    // } catch (error) {
-    //   console.error("Error downloading logo:", error);
-    //   toast.dismiss();
-    //   toast.error("Download failed", {
-    //     description: "Failed to download the logo. Please try again later.",
-    //   });
-    // }
+    try {
+      const loadingToastId = toast.loading("Preparing your download...");
+      const response = await fetch(logo.imageUrl, {
+        mode: "cors", // Ensure CORS is enabled
+      });
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+      const blob = await response.blob();
+      const filename = logo.title
+        ? `${logo.title.replace(/\s+/g, "-")}.png`
+        : `logo-${logo.id}.png`;
+      const FileSaver = await import("file-saver");
+      FileSaver.default(blob, filename);
+      toast.dismiss(loadingToastId);
+      setTimeout(() => {
+        toast.success("Logo downloaded successfully!");
+      }, 300);
+    } catch (error) {
+      console.error("Error downloading logo:", error);
+      toast.dismiss();
+      toast.error("Download failed", {
+        description: "Failed to download the logo. Please try again later.",
+      });
+    }
   };
 
   const handleDelete = async (logo) => {
@@ -688,5 +688,5 @@ function LogoList() {
     </div>
   );
 }
-export const dynamic = "force-dynamic";
+
 export default LogoList;

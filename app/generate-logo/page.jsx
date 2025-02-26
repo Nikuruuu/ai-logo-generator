@@ -153,37 +153,37 @@ function GenerateLogo() {
   };
 
   const handleDownload = async () => {
-    // try {
-    //   if (!logoImage) {
-    //     toast.error("No logo available to download");
-    //     return;
-    //   }
-    //   const loadingToastId = toast.loading("Preparing your download...");
-    //   console.log("Attempting to download logo from URL:", logoImage);
-    //   const response = await fetch(logoImage, {
-    //     mode: "cors", // Ensure CORS is enabled
-    //   });
-    //   if (!response.ok) {
-    //     throw new Error(`Network response was not ok: ${response.statusText}`);
-    //   }
-    //   const blob = await response.blob();
-    //   const filename = formData?.title
-    //     ? `${formData.title.replace(/\s+/g, "-")}.png`
-    //     : `logo-${Date.now()}.png`;
-    //   const FileSaver = await import("file-saver");
-    //   FileSaver.default(blob, filename);
-    //   toast.dismiss(loadingToastId);
-    //   // Add a slight delay before showing the success toast
-    //   setTimeout(() => {
-    //     toast.success("Logo downloaded successfully!");
-    //   }, 300);
-    // } catch (error) {
-    //   console.error("Error downloading logo:", error);
-    //   toast.dismiss();
-    //   toast.error("Download failed", {
-    //     description: "Failed to download the logo. Please try again later.",
-    //   });
-    // }
+    try {
+      if (!logoImage) {
+        toast.error("No logo available to download");
+        return;
+      }
+      const loadingToastId = toast.loading("Preparing your download...");
+      console.log("Attempting to download logo from URL:", logoImage);
+      const response = await fetch(logoImage, {
+        mode: "cors", // Ensure CORS is enabled
+      });
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
+      }
+      const blob = await response.blob();
+      const filename = formData?.title
+        ? `${formData.title.replace(/\s+/g, "-")}.png`
+        : `logo-${Date.now()}.png`;
+      const FileSaver = await import("file-saver");
+      FileSaver.default(blob, filename);
+      toast.dismiss(loadingToastId);
+      // Add a slight delay before showing the success toast
+      setTimeout(() => {
+        toast.success("Logo downloaded successfully!");
+      }, 300);
+    } catch (error) {
+      console.error("Error downloading logo:", error);
+      toast.dismiss();
+      toast.error("Download failed", {
+        description: "Failed to download the logo. Please try again later.",
+      });
+    }
   };
 
   return (
