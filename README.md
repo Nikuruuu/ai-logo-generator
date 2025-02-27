@@ -1,6 +1,6 @@
 # DeepLogo AI - AI-Powered Logo Generator
 
-![DeepLogo AI Banner](https://raw.githubusercontent.com/Nikuruuu/ai-logo-generator/main/public/dark-icon.png)
+![DeepLogo AI Banner]   <img src="./public/dark-icon.png" alt="DeepLogo AI Banner" width="25" height="25">
 
 DeepLogo AI is a modern web application that creates beautiful, unique logos for your business or project in seconds using artificial intelligence.
 
