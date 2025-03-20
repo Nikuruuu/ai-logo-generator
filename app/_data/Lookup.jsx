@@ -1,8 +1,9 @@
 export default {
-  HeroHeading: "Transform Your Brand with AI-Powered Logo Design",
-  HeroSubheading: "Where Artificial Intelligence Meets Creative Excellence",
+  HeroHeading: "Revolutionize Your Brand Identity with AI-Powered Logo Design",
+  HeroSubheading:
+    "Where Cutting-Edge Artificial Intelligence Meets Inspired Creative Vision",
   HeroDescription:
-    "Create stunning, unique logos in minutes with our advanced AI technology. DeepLogo AI understands your brand's personality and generates professional logos that stand out in the digital landscape. No design experience needed.",
+    "Create distinctive, professional logos in minutes with our sophisticated AI technology. DeepLogo AI analyzes your brand's essence and generates tailored visual identities that captivate and resonate in today's competitive marketplace. From concept to completion - no design experience required.",
   InputPlaceholder: "Enter your industry or field of expertise...",
 
   LogoTitle: "Your Logo Title",

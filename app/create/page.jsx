@@ -58,7 +58,7 @@ function CreateLogo() {
     setStep(step + 1);
   };
   return (
-    <div className="mt-16 md:mt-28 p-4 sm:p-6 md:p-10 border rounded-xl mx-4 sm:mx-0">
+    <div className="mt-8 md:mt-16 p-4 sm:p-6 md:p-8 border-2 border-gray-300 rounded-xl shadow-lg mx-2 sm:mx-4 bg-white max-w-4xl md:mx-auto">
       {step == 1 ? (
         <LogoTitle
           onHandleInputChange={(v) => onHandleInputChange("title", v)}

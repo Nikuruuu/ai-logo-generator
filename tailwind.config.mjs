@@ -8,6 +8,12 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        sparkle: {
+          "0%, 100%": { opacity: "0.75", scale: "0.9" },
+          "50%": { opacity: "1", scale: "1" },
+        },
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -63,6 +69,7 @@ export default {
       },
       animation: {
         spinner: "spinner 1s linear infinite",
+        sparkle: "sparkle 2s ease-in-out infinite",
       },
       keyframes: {
         spinner: {
