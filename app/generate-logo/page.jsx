@@ -15,6 +15,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Download, RotateCcw } from "lucide-react";
 import dynamic from "next/dynamic";
+import { TextShimmerWave } from "@/components/motion-primitives/text-shimmer-wave";
 
 const LottieAnimation = dynamic(
   () => import("@/components/ui/lottie-animation"),
@@ -159,7 +160,7 @@ function GenerateLogo() {
         return;
       }
       const loadingToastId = toast.loading("Preparing your download...");
-      console.log("Attempting to download logo from URL:", logoImage);
+
       const response = await fetch(logoImage, {
         mode: "cors", // Ensure CORS is enabled
       });
@@ -208,9 +209,10 @@ function GenerateLogo() {
       {loading ? (
         <div className="w-full max-w-md">
           <LottieAnimation />
-          <p className="text-center mt-4 text-gray-600">
+
+          <TextShimmerWave className="text-lg text-center" duration={2}>
             We're crafting your perfect logo. This may take up to a minute...
-          </p>
+          </TextShimmerWave>
         </div>
       ) : logoImage ? (
         <div className="flex flex-col items-center w-full max-w-4xl">
