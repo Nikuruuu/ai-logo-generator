@@ -27,7 +27,7 @@ function LogoIdea({ onHandleInputChange, formData }) {
     const result = await axios.post("/api/ai-design-ideas", {
       prompt: PROMPT,
     });
-    console.log(result.data);
+
     setIdeas(result.data.ideas);
     setLoading(false);
   };

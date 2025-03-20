@@ -20,7 +20,6 @@ export async function POST(req) {
     // Generate AI prompt from user input
     const AiPromptResult = await AiLogoPrompt.sendMessage(prompt);
     const AiPrompt = JSON.parse(await AiPromptResult.response.text()).prompt;
-    console.log(AiPrompt);
 
     // Use different Replicate models or settings for Free vs Premium
     if (type === "Free") {
@@ -41,11 +40,10 @@ export async function POST(req) {
           },
         }
       );
-      console.log("Free tier output:", output);
       base64ImageWithMime = await ConvertImageToBase64(output[0]);
     } else {
       // Premium tier: Higher quality settings
-      creditsToDeduct = 3; // Deduct 3 credits for premium tier
+      creditsToDeduct = 4; // Deduct 4 credits for premium tier
 
       const output = await replicate.run(
         "bytedance/hyper-flux-8step:81946b1e09b256c543b35f37333a30d0d02ee2cd8c4f77cd915873a1ca622bad",
@@ -61,7 +59,6 @@ export async function POST(req) {
           },
         }
       );
-      console.log("Premium tier output:", output);
       base64ImageWithMime = await ConvertImageToBase64(output[0]);
     }
 
