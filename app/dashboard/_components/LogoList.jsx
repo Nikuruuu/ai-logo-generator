@@ -83,8 +83,6 @@ function LogoList() {
         const logoData = doc.data();
         const docId = doc.id;
 
-        console.log(`Processing Firestore doc: ${docId}`);
-
         // Use the image URL directly from Firestore document
         if (logoData.image) {
           logosData.push({
@@ -217,9 +215,6 @@ function LogoList() {
           if (logoToDelete.storagePath) {
             const imageRef = ref(storage, logoToDelete.storagePath);
             await deleteObject(imageRef);
-            console.log(
-              "Image deleted from Storage using storagePath property"
-            );
           }
           // Second priority: Try using the timestamp-based path for older logos
           else if (logoToDelete.timestamp) {
@@ -228,9 +223,6 @@ function LogoList() {
             const storagePath = `users/${userDetail.email}/logos/${timestamp}`;
             const imageRef = ref(storage, storagePath);
             await deleteObject(imageRef);
-            console.log(
-              "Image deleted from Storage using timestamp-based path"
-            );
           }
           // Last resort: Parse path from imageUrl if available
           else if (
@@ -244,7 +236,6 @@ function LogoList() {
               const storagePath = decodeURIComponent(pathMatch[1]);
               const imageRef = ref(storage, storagePath);
               await deleteObject(imageRef);
-              console.log("Image deleted from Storage using URL path");
             } else {
               console.log(
                 "Could not extract path from URL, skipping storage deletion"

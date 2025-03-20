@@ -40,10 +40,9 @@ export default {
       title: "Free",
       icon: "/free.gif", // Add your free plan icon here
       features: [
-        "⚫ Generate limited logos for free",
         "⚫ Longer wait times",
-        "⚫ Wait time: 30 seconds to 3 minutes",
-        "⚫ Limited Design Options and Quality",
+        "⚫ Costs 2 credits per generation",
+        "⚫ Limited design options and quality",
       ],
       button: "Generate Free",
     },
@@ -51,10 +50,9 @@ export default {
       title: "Premium",
       icon: "/premium.gif", // Add your premium plan icon here
       features: [
-        "⚫ Generate unlimited logos",
-        "⚫ Shorter wait times",
-        "⚫ Wait time: Instant to 10 seconds",
-        "⚫ High-Quality and Exclusive Designs",
+        "⚫ Faster processing ",
+        "⚫ Costs 4 credits per generation",
+        "⚫ High-quality and exclusive designs",
       ],
       button: "Generate Premium",
     },

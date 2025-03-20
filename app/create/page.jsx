@@ -22,7 +22,6 @@ function CreateLogo() {
       [field]: value,
     }));
 
-    console.log(formData);
     if (value && typeof value === "string" && value.trim() !== "") {
       setError("");
     }
@@ -98,13 +97,16 @@ function CreateLogo() {
             Previous
           </Button>
         )}
-        <Button
-          onClick={handleNextStep}
-          className="bg-brand-primary hover:bg-brand-secondary"
-        >
-          <ArrowRight />
-          Continue
-        </Button>
+
+        {step !== 6 && (
+          <Button
+            onClick={handleNextStep}
+            className="bg-brand-primary hover:bg-brand-secondary"
+          >
+            <ArrowRight />
+            Continue
+          </Button>
+        )}
       </div>
       {error && (
         <Alert variant="destructive" className="mt-4 ">
