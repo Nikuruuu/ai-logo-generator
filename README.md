@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DeepLogo AI - AI-Powered Logo Generator
 
-## Getting Started
+![DeepLogo AI Banner]   <img src="./public/dark-icon.png" alt="DeepLogo AI Banner" width="25" height="25">
 
-First, run the development server:
+DeepLogo AI is a modern web application that creates beautiful, unique logos for your business or project in seconds using artificial intelligence.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- 🤖 **AI-Powered Generation** - Create professional logos with just a text prompt.
+- 🎨 **Customization Options** - Adjust colors, styles, and layouts to match your brand.
+- 📊 **User Dashboard** - Save, manage, and edit your generated logos.
+- 📥 **High-Resolution Export** - Download your logos in multiple formats.
+- 🔐 **Secure Authentication** - User account management with Clerk.
+
+## Tech Stack
+
+- **Frontend:** Next.js, React, Tailwind CSS
+- **Authentication:** Clerk
+- **UI Components:** ShadcnUI
+- **API Integration:** Axios
+
+## Installation
+
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/deeplogo-ai.git
+   cd deeplogo-ai
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Create a `.env.local` file with the required environment variables:**
+   ```env
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_public_key
+   CLERK_SECRET_KEY=your_secret_key
+   ```
+4. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+5. **Open the application in your browser:**
+   ```
+   http://localhost:3000
+   ```
+
+## How It Works
+
+1. **Enter Your Business Name** - Provide the name or description of your business.
+2. **AI Generation** - Our AI will create multiple logo options based on your input.
+3. **Customize** - Fine-tune your preferred design with color and style adjustments.
+4. **Download** - Export your logo in the format you need.
+
+## Project Structure
+
+```
+app/
+├── _components/    # Shared UI components
+├── _context/       # Context providers
+├── _data/          # Static data files
+├── api/            # API endpoints
+├── create/         # Logo creation page
+├── dashboard/      # User dashboard
+├── page.js         # Home page
+components/         # UI component library
+public/             # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The application is configured for deployment on Vercel:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Deploy using Vercel CLI:**
+   ```sh
+   npm run build
+   ```
+2. **Or connect your GitHub repository to Vercel for automatic deployments.**
 
-## Learn More
+## Contact
 
-To learn more about Next.js, take a look at the following resources:
+📧 **Jeremiah Delacruz** - [zeremiahdelacruz@gmail.com](mailto:zeremiahdelacruz@gmail.com)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the **MIT License**.

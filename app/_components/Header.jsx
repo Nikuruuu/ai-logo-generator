@@ -27,7 +27,7 @@ function Header() {
     }
   }, []);
   return (
-    <div className="px-4 sm:px-10 lg:px-32 xl:px-48 2xl:px-56 p-2 flex justify-between items-center shadow-sm">
+    <div className="bg-white px-4 sm:px-10 lg:px-32 xl:px-48 2xl:px-56 p-2 flex justify-between items-center shadow-lg">
       <Link href="/" className="relative">
         {isMobile ? (
           // Mobile logo (icon only)
