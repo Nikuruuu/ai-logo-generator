@@ -24,7 +24,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        elements: {
+          formButtonPrimary: "bg-black hover:bg-gray-800",
+        },
+      }}
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+    >
       <html lang="en" suppressHydrationWarning>
         <body className={hostGrotesk.variable}>
           <Provider>
