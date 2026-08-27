@@ -79,7 +79,3 @@ The application is configured for deployment on Vercel:
 ## Contact
 
 📧 **Jeremiah Delacruz** - [zeremiahdelacruz@gmail.com](mailto:zeremiahdelacruz@gmail.com)
-
-## License
-
-This project is licensed under the **MIT License**.
